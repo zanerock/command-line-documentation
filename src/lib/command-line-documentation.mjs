@@ -13,8 +13,26 @@ const commandLineDocumentation = ({
 
   content += documentUsage({ depth, mainCommand, mainOptions })
 
+  if (commands !== undefined) {
+    content += commandTOC({ commands, context: mainCommand, depth, header: 'Commands' })
+  }
+
   const mainOptionsHeader = commands === undefined ? 'Options' : 'Main options'
   content += documentOptions({ depth, header: mainOptionsHeader, allOptions: mainOptions })
+
+  return content
+}
+
+const commandTOC = ({ commands, context, depth, header }) => {
+  commands.sort((a, b) => a.name.localeCompare(b.name))
+
+  let content = sectionMark(depth + 1) + ' ' + header + '\n\n'
+
+  for (const { name, summary } of commands) {
+    `- [${name}](#${internalRef(context + ' ' + name)}): ${summary}\n`
+  }
+
+  content += '\n'
 
   return content
 }
@@ -55,6 +73,8 @@ const documentUsage = ({ depth, mainCommand, mainOptions }) => {
 
   return usage
 }
+
+const internalRef = (s) => s.replaceAll(/[^a-zA-Z0-9_-]+/g, '-').toLowerCase()
 
 const sectionMark = (depth) =>  '#'.repeat(depth)
 
