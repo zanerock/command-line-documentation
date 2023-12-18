@@ -6,7 +6,10 @@ const commandTOC = ({ commands, context, depth, header }) => {
   let content = sectionMark(depth + 1) + ' ' + header + '\n\n'
 
   for (const { name, summary } of commands) {
-    content += `- [\`${name}\`](#${internalRef(context + ' ' + name)}): ${summary}\n`
+    content += `- [\`${name}\`](#${internalRef(context + ' ' + name)})`
+    if (summary !== undefined) {
+      content += `: ${summary}\n`
+    }
   }
 
   content += '\n'
