@@ -5,11 +5,11 @@ import yaml from 'js-yaml'
 import { commandLineDocumentation } from '../lib/command-line-documentation'
 import { convertCLISpecTypes } from '../lib/convert-cli-spec-types'
 
-const cld = async ({ argv = process.argv, stdout = process.stdout } = {}) => {
+const cld = async ({ argv = process.argv, stderr = process.stderr, stdout = process.stdout } = {}) => {
   const filePath = argv[2]
 
   if (filePath === undefined) {
-    process.stderr.write('Missing required CLI spec path.\n')
+    stderr.write('Missing required CLI spec path.\n')
   }
 
   let fileContents
@@ -18,11 +18,11 @@ const cld = async ({ argv = process.argv, stdout = process.stdout } = {}) => {
   }
   catch (e) {
     if (e.code === 'ENOENT') {
-      process.stderr.write(`No such file '${filePath}'.\n`)
-      process.exit(1)
+      stderr.write(`No such file '${filePath}'.\n`)
+      return 1
     }
-    process.stderr.write(e.message + '\n')
-    process.exit(10)
+    stderr.write(e.message + '\n')
+    return 10
   }
 
   let rawCLISpec
@@ -30,8 +30,8 @@ const cld = async ({ argv = process.argv, stdout = process.stdout } = {}) => {
     rawCLISpec = yaml.load(fileContents)
   }
   catch (e) {
-    process.stderr.write(`Cannot parse '${filePath}' as YAML file; ${e.message}\n`)
-    process.exit(2)
+    stderr.write(`Cannot parse '${filePath}' as YAML file; ${e.message}\n`)
+    return 2
   }
 
   let cliSpec
@@ -39,13 +39,14 @@ const cld = async ({ argv = process.argv, stdout = process.stdout } = {}) => {
     cliSpec = convertCLISpecTypes(rawCLISpec)
   }
   catch (e) {
-    process.stderr.write('Invalid CLI spec; ' + e.message + '\n')
-    process.exit(4)
+    stderr.write('Invalid CLI spec; ' + e.message + '\n')
+    return 4
   }
 
   const doc = commandLineDocumentation({ cliSpec })
 
   stdout.write(doc)
+  return 0
 }
 
 export { cld }

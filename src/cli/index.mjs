@@ -1,3 +1,4 @@
 import { cld } from './cld'
 
-cld()
+const exitCode = cld()
+process.exit(exitCode)
