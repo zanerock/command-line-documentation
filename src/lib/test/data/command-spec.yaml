@@ -1,9 +1,10 @@
+mainCommand: foo
 mainOptions:
   - name: command
     defaultOption: true
     type: String
 commands:
-  create:
+  - name: create
     summary: Creates (sets up) a cloud-based Minecraft server managed by Cloudcraft.
     arguments:
       - name : server-name
@@ -13,7 +14,7 @@ commands:
       - name: server-type
         default: bedrock
         description: May be either 'bedrock' or 'java'.
-  help:
+  - name: help
     summary: >
       With no command specified, prints a list of available commands or, when a command 
       is specified, prints help for the specified command.
@@ -21,7 +22,7 @@ commands:
       - name: command
         defaultOption: true
         description: The command to print help for.
-  info:
+  - name: info
     summary: Prints info about the Minecraft server(s).
     arguments:
       - name: server-name
@@ -36,9 +37,9 @@ commands:
       - name : refresh
         type: Boolean
         description: Updates underlying terraform files and applies the results before reading the output.
-  list:
+  - name: list
     summary: Lists Cloudcraft managed Minecraft servers.
-  status:
+  - name: status
     summary: Displays the status of a Minecraft server.
     arguments:
       - name: server-name

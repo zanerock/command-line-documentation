@@ -6,11 +6,18 @@ import { sectionMark } from './lib/helpers'
 
 const commandLineDocumentation = ({
   cliSpec = throw new Error("Missing required parameter 'cliSpec'."),
-  mainCommand = throw new Error("Missing required parameter 'mainCommand'."),
+  mainCommand,
   output,
   sectionDepth = 1,
-  title = `\`${mainCommand}\` Command Reference`
+  title
 }) => {
+  mainCommand = mainCommand || cliSpec.mainCommand
+  if (mainCommand === undefined) {
+    throw new Error("Must define the main command in call to 'commandLineDocumentation' or the CLI spec.")
+  }
+  
+  title = title || `\`${mainCommand}\` Command Reference`
+
   let content = ''
   const depth = sectionDepth
   const { mainOptions } = cliSpec

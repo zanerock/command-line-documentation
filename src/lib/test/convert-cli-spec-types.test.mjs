@@ -20,11 +20,11 @@ describe('convertCLISpecTypes', () => {
   test("converts 'mainOptions'", () => expect(cliSpec.mainOptions[0].type).toBe(String))
 
   test('converts command arguments', () => {
-    expect(cliSpec.commands.info.arguments[1].type).toBe(Boolean)
-    expect(cliSpec.commands.info.arguments[2].type).toBe(Boolean)
-    expect(cliSpec.commands.info.arguments[3].type).toBe(Boolean)
-    expect(cliSpec.commands.status.arguments[1].type).toBe(Boolean)
-    expect(cliSpec.commands.status.arguments[2].type).toBe(Number)
+    expect(cliSpec.commands[2].arguments[1].type).toBe(Boolean)
+    expect(cliSpec.commands[2].arguments[2].type).toBe(Boolean)
+    expect(cliSpec.commands[2].arguments[3].type).toBe(Boolean)
+    expect(cliSpec.commands[2].arguments[1].type).toBe(Boolean)
+    expect(cliSpec.commands[4].arguments[2].type).toBe(Number)
   })
 
   test('Raises error on non-convertable type', () => {
