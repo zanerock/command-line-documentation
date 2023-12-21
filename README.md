@@ -48,6 +48,70 @@ To generate documentation from a YAML or JSON spec file.
 npx cld path/to/cli-spec.yaml
 ```
 
+## Example output
+
+You can see this package's `cld` documentation [here](#cli-reference).
+
+Processin the [example CLI spec](#cli-spec-data-structure) would generate:
+```markdown
+# `widget-maker` Command Reference
+
+## Usage
+
+`widget-maker <options> <command>`
+
+## Command summary
+
+- [`create`](#widget-maker-create): Creates a new widget.
+- [`help`](#widget-maker-help): With no command specified, prints a list of available commands or, when a command  is specified, prints help for the specified command.
+
+
+## Main options
+
+|Option|Description|
+|------|------|
+|<command>|(_main argument_,_optional_) The command to execute.||`--verbose`, `-v`|Makes the output a bit more chatty.|
+
+## Commands
+
+<span id="widget-maker-create"></span>
+### `widget-maker create [type]`
+
+Creates a new widget.
+
+#### `create` options
+
+|Option|Description|
+|------|------|
+|[type]|(_main argument_,_required_) The type of the widget to create.|
+
+### Subcommands
+
+- [`chart`](#widget-maker-create-chart)- [`summary`](#widget-maker-create-summary)
+
+### Subcommand reference
+
+<span id="widget-maker-create-chart"></span>
+#### `widget-maker create chart <options>`
+
+Creates a chart widget
+
+<span id="widget-maker-create-summary"></span>
+#### `widget-maker create summary`
+
+Creates a summary widget.
+<span id="widget-maker-help"></span>
+### `widget-maker help <command>`
+
+With no command specified, prints a list of available commands or, when a command  is specified, prints help for the specified command.
+
+#### `help` options
+
+|Option|Description|
+|------|------|
+|<command>|(_main argument_,_optional_) The command to print help for.|
+```
+
 ## User reference
 
 ### Library API
