@@ -4,7 +4,13 @@
   "description": "",
   "main": "dist/command-line-documentation.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "make",
+    "lint": "make lint",
+    "lint:fix": "make lint-fix",
+    "test": "make test",
+    "prepack": "make build",
+    "preversion": "npm test && make lint",
+    "qa": "make qa"
   },
   "bin": {
     "cld": "./dist/command-line-documentation-exec.js"
