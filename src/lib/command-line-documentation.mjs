@@ -4,18 +4,15 @@ import { documentOptions } from './lib/document-options'
 import { documentUsage } from './lib/document-usage'
 import { sectionMark } from './lib/helpers'
 
-const commandLineDocumentation = ({
+const commandLineDocumentation = (
   cliSpec = throw new Error("Missing required parameter 'cliSpec'."),
-  mainCommand,
-  output,
-  sectionDepth = 1,
-  title
-}) => {
+  { mainCommand, sectionDepth = 1, title } = {}
+) => {
   mainCommand = mainCommand || cliSpec.mainCommand
   if (mainCommand === undefined) {
     throw new Error("Must define the main command in call to 'commandLineDocumentation' or the CLI spec.")
   }
-  
+
   title = title || `\`${mainCommand}\` Command Reference`
 
   let content = ''

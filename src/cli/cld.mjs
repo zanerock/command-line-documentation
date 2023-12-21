@@ -44,7 +44,7 @@ const cld = async ({ argv = process.argv, stderr = process.stderr, stdout = proc
     return 4
   }
 
-  const doc = commandLineDocumentation({ cliSpec })
+  const doc = commandLineDocumentation(cliSpec)
 
   stdout.write(doc)
   return 0
