@@ -1,3 +1,4 @@
+import { displayArg } from './display-arg'
 import { separateOptions } from './helpers'
 
 const documentCommandArgs = ({ allOptions }) => {
@@ -11,8 +12,7 @@ const documentCommandArgs = ({ allOptions }) => {
     content += ' <options>'
   }
   if (defaultOption !== undefined) {
-    const { required, name } = defaultOption
-    content += ' ' + (required === true ? '[' : '<') + name + (required === true ? ']' : '>')
+    content += ' ' + displayArg(defaultOption)
   }
 
   return content

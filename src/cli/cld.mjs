@@ -1,16 +1,54 @@
 import * as fs from 'node:fs/promises'
 
+import commandLineArgs from 'command-line-args'
 import yaml from 'js-yaml'
 
 import { commandLineDocumentation } from '../lib/command-line-documentation'
 import { convertCLISpecTypes } from '../lib/convert-cli-spec-types'
 
-const cld = async ({ argv = process.argv, stderr = process.stderr, stdout = process.stdout } = {}) => {
-  const filePath = argv[2]
+const myCLISpec = {
+  mainCommand: 'cld',
+  mainOptions: [
+    { 
+      name: 'cli-spec-path',
+      description: 'The path to the [CLI spec file](https://github.com/liquid-labs/command-line-documentation##cli-spec-data-structure).',
+      defaultOption: true
+    },
+    { 
+      name: 'document',
+      description: '({underline bool} when set, will generate own documentation and exit. The `--depth` and `--title` options work with self-documentation as well.',
+      type: Boolean
+    },
+    { 
+      name: 'section-depth',
+      description: "({underline integer}, default: 1) a depth of '1' (the default) makes the initial section a title (H1/'#') heading. A depth of two would generate an H1/'##' heading, etc.",
+      type: Number
+    },
+    { 
+      name: 'title',
+      description: '({underline string}, default: {underline dynamic) specifies the primary section heading (title). If not specified, will default to "\`${mainCommand}\` Command Reference".'
+    }
+  ]
+}
 
-  if (filePath === undefined) {
-    stderr.write('Missing required CLI spec path (from argv).\n')
+const cld = async ({ argv = process.argv, stderr = process.stderr, stdout = process.stdout } = {}) => {
+  const options = commandLineArgs(myCLISpec.mainOptions, { argv })
+  const filePath = options['cli-spec-path']
+  const { document: doDocument, title } = options
+  const sectionDepth = options['section-depth']
+
+  if (filePath !== undefined && doDocument === true) {
+    stderr.write("Option '--document' incompatible with CLI spec path.")
+    return 5
+  }
+  else if (filePath === undefined && doDocument !== true) {
+    stderr.write("Missing required CLI spec path (from argv), or invoke with '--document' option.\n")
     return 1
+  }
+  else if (doDocument === true) {
+    const content = await commandLineDocumentation(myCLISpec, { sectionDepth, title })
+    process.stdout.write(content)
+    return 0
   }
 
   let fileContents

@@ -4,7 +4,16 @@ import { documentOptions } from '../document-options'
 describe('documentOptions', () => {
   test.each([
     [[], ''],
-    [[{ name: 'foo', defaultOption: true, description: 'The default option'}], ''],
+    [
+      [{ name: 'foo', defaultOption: true, description: 'The default option'}],
+      `## Test
+
+|Option|Description|
+|------|------|
+|\`<foo>\`|(_main argument_,_optional_) The default option|
+
+`
+    ],
     [
       [{ name: 'bar', description: 'Optional option'}], 
       `## Test

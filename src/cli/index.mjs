@@ -1,4 +1,6 @@
 import { cld } from './cld'
 
-const exitCode = cld()
-process.exit(exitCode)
+(async() => {
+  const exitCode = await cld()
+  process.exit(exitCode)
+})()

@@ -1,5 +1,5 @@
 # command-line-documentation
-[![coverage: 98%](./.readme-assets/coverage.svg)](https://github.com/liquid-labs/command-line-documentation/pulls?q=is%3Apr+is%3Aclosed)
+[![coverage: 95%](./.readme-assets/coverage.svg)](https://github.com/liquid-labs/command-line-documentation/pulls?q=is%3Apr+is%3Aclosed)
 
 Generates Markdown "user guide" based off CLI spec compatible with [command-line-args]() and [command-line-usage]().
 
@@ -59,7 +59,7 @@ Generates Markdown documentation based on the [CLI spec data structure](#cli-spe
 __Arguments__:
 - `cliSpec`: (_object_) a [CLI spec data structure](#cli-spec-data-structure).
 - `options.mainCommand`: (_string_) the name of the command being documented. This will override the `mainCommand` field in the [CLI spec](#cli-spec-data-structure) (if defined).
-- `options.sectionDepth`: (_integer_, default: 1) depth 1 (the default) makes the initial section a title ('#') heading. A depth of two would generate an H1/## heading, etc.
+- `options.sectionDepth`: (_integer_, default: 1) a depth of '1' (the default) makes the initial section a title ('#') heading. A depth of two would generate an H1/## heading, etc.
 - `options.title`: (_string_, default: _dynamic_) specifies the primary section heading (title). If not specified, will default to "\`${mainCommand}\` Command Reference".
 
 #### `convertCLISpecTypes(<cliSpec>)`
@@ -110,4 +110,18 @@ commands:
         description: The command to print help for.
 ```
 
-### CLI Reference
+### CLI reference
+
+#### Usage
+
+`cld <options> <cli-spec-path>`
+
+#### Options
+
+|Option|Description|
+|------|------|
+|`<cli-spec-path>`|(_main argument_,_optional_) The path to the [CLI spec file](https://github.com/liquid-labs/command-line-documentation##cli-spec-data-structure).|
+|`--document`|(_bool_ when set, will generate own documentation and exit. The `--depth` and `--title` options work with self-documentation as well.|
+|`--section-depth`|(_integer_, default: 1) a depth of '1' (the default) makes the initial section a title (H1/'#') heading. A depth of two would generate an H1/'##' heading, etc.|
+|`--title`|(_string_, default: _dynamic) specifies the primary section heading (title). If not specified, will default to "`${mainCommand_` Command Reference".|
+
