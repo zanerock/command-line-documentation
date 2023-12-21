@@ -10,6 +10,8 @@ const documentCommands = ({ commands, context, depth, header, noNewline = false 
   commands = [...commands].sort((a, b) => a.name.localeCompare(b.name))
   let content = sectionMark(depth + 1) + ' ' + header + '\n\n'
 
+  content += commandTOC({ commands, context : mainCommand })
+
   commands.forEach(({ arguments: args, subCommands, description, name, summary }, i, arr) => {
     content += '<span id="' + internalRef(context + ' ' + name) + '"></span>\n'
     content += sectionMark(depth + 2) + ` \`${context} ${name}` + documentCommandArgs({ allOptions : args }) + '`\n\n'

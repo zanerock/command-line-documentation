@@ -24,10 +24,6 @@ const commandLineDocumentation = (
 
   content += documentUsage({ depth, mainCommand, mainOptions })
 
-  if (commands !== undefined) {
-    content += commandTOC({ commands, context : mainCommand, depth, header : 'Command summary' })
-  }
-
   const mainOptionsHeader = commands === undefined ? 'Options' : 'Main options'
   content += documentOptions({ depth, header : mainOptionsHeader, allOptions : mainOptions })
 
