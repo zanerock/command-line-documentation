@@ -1,4 +1,5 @@
 # command-line-documentation
+[![coverage: 98%](./.readme-assets/coverage.svg)](https://github.com/liquid-labs/command-line-documentation/pulls?q=is%3Apr+is%3Aclosed)
 
 Generates Markdown "user guide" based off CLI spec compatible with [command-line-args]() and [command-line-usage]().
 
