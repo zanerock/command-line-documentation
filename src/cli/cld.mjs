@@ -9,7 +9,8 @@ const cld = async ({ argv = process.argv, stderr = process.stderr, stdout = proc
   const filePath = argv[2]
 
   if (filePath === undefined) {
-    stderr.write('Missing required CLI spec path.\n')
+    stderr.write('Missing required CLI spec path (from argv).\n')
+    return 1
   }
 
   let fileContents
@@ -19,7 +20,7 @@ const cld = async ({ argv = process.argv, stderr = process.stderr, stdout = proc
   catch (e) {
     if (e.code === 'ENOENT') {
       stderr.write(`No such file '${filePath}'.\n`)
-      return 1
+      return 2
     }
     stderr.write(e.message + '\n')
     return 10
@@ -31,7 +32,7 @@ const cld = async ({ argv = process.argv, stderr = process.stderr, stdout = proc
   }
   catch (e) {
     stderr.write(`Cannot parse '${filePath}' as YAML file; ${e.message}\n`)
-    return 2
+    return 3
   }
 
   let cliSpec
