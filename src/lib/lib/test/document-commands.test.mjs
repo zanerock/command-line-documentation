@@ -5,6 +5,7 @@ describe('documentCommands', () => {
   const commands = [
     { 
       name: 'command-b',
+      arguments: [{ name: 'sub-command', description: 'the sub-command.', defaultOption: true }],
       subCommands: [
         { name: 'sub-a', summary: 'Subcommand A' },
         { name: 'sub-b', description: 'Subcommand B' }
@@ -24,34 +25,50 @@ describe('documentCommands', () => {
 
   const expected = `## Test
 
+- [\`command-a\`](#main-command-command-a): The first command.
+- [\`command-b\`](#main-command-command-b): Command with sub-commands
+
 <span id="main-command-command-a"></span>
 ### \`main-command command-a <options>\`
 
 More details.
 
+#### \`command-a\` options
+
+|Option|Description|
+|------|------|
+|\`--option-a\`|an option|
+
 <span id="main-command-command-b"></span>
-### \`main-command command-b\`
+### \`main-command command-b <sub-command>\`
 
 Command with sub-commands
 
-### Subcommands
+#### \`command-b\` options
+
+|Option|Description|
+|------|------|
+|\`<sub-command>\`|(_main argument_,_optional_) the sub-command.|
+
+
+#### Subcommands
 
 - [\`sub-a\`](#main-command-command-b-sub-a): Subcommand A
-- [\`sub-b\`](#main-command-command-b-sub-b)
-
-### Subcommand reference
+- [\`sub-b\`](#main-command-command-b-sub-b): Subcommand B
 
 <span id="main-command-command-b-sub-a"></span>
-#### \`main-command command-b sub-a\`
+##### \`main-command command-b sub-a\`
 
 Subcommand A
 
 <span id="main-command-command-b-sub-b"></span>
-#### \`main-command command-b sub-b\`
+##### \`main-command command-b sub-b\`
 
 Subcommand B
 
+
 `
+
 
   let content
   beforeAll(() => {

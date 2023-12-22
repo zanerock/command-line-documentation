@@ -10,38 +10,27 @@ const documentCommands = ({ commands, context, depth, header, noNewline = false 
   commands = [...commands].sort((a, b) => a.name.localeCompare(b.name))
   let content = sectionMark(depth + 1) + ' ' + header + '\n\n'
 
-  content += commandTOC({ commands, context : mainCommand })
+  content += commandTOC({ commands, context })
 
   commands.forEach(({ arguments: args, subCommands, description, name, summary }, i, arr) => {
     content += '<span id="' + internalRef(context + ' ' + name) + '"></span>\n'
     content += sectionMark(depth + 2) + ` \`${context} ${name}` + documentCommandArgs({ allOptions : args }) + '`\n\n'
     content += description !== undefined
-      ? chalkTemplateToMd(description) + '\n'
+      ? chalkTemplateToMd(description) + '\n\n'
       : summary !== undefined
-        ? chalkTemplateToMd(summary) + '\n'
+        ? chalkTemplateToMd(summary) + '\n\n'
         : ''
-    if (i + 1 < arr.length) {
-      content += '\n'
-    }
 
-    if (args?.some(({ defaultOption }) => !!defaultOption)) {
-      content += documentOptions({ depth : depth + 2, header : '`' + name + '` options', allOptions : args })
-    }
+    content += documentOptions({ depth : depth + 2, header : '`' + name + '` options', allOptions : args })
 
     if (subCommands !== undefined && subCommands.length > 0) {
       content += '\n'
       const subCommandContext = context + ' ' + name
-      content += commandTOC({
-        commands : subCommands,
-        context  : subCommandContext,
-        depth    : depth + 1,
-        header   : 'Subcommands'
-      }) + '\n'
       content += documentCommands({
         commands : subCommands,
         context  : subCommandContext,
-        depth    : depth + 1,
-        header   : 'Subcommand reference',
+        depth    : depth + 2,
+        header   : 'Subcommands',
         noNewline : true
       })
     }

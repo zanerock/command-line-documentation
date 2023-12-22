@@ -60,19 +60,18 @@ Processin the [example CLI spec](#cli-spec-data-structure) would generate:
 
 `widget-maker <options> <command>`
 
-## Command summary
-
-- [`create`](#widget-maker-create): Creates a new widget.
-- [`help`](#widget-maker-help): With no command specified, prints a list of available commands or, when a command  is specified, prints help for the specified command.
-
-
 ## Main options
 
 |Option|Description|
 |------|------|
-|<command>|(_main argument_,_optional_) The command to execute.||`--verbose`, `-v`|Makes the output a bit more chatty.|
+|`<command>`|(_main argument_,_optional_) The command to execute.|
+|`--verbose`, `-v`|Makes the output a bit more chatty.|
 
 ## Commands
+
+- [`create`](#widget-maker-create): Creates a new widget.
+- [`help`](#widget-maker-help): With no command specified, prints a list of available commands or, when a command  is specified, prints help for the specified command.
+
 
 <span id="widget-maker-create"></span>
 ### `widget-maker create [type]`
@@ -83,33 +82,41 @@ Creates a new widget.
 
 |Option|Description|
 |------|------|
-|[type]|(_main argument_,_required_) The type of the widget to create.|
+|`[type]`|(_main argument_,_required_) The type of the widget to create.|
 
-### Subcommands
 
-- [`chart`](#widget-maker-create-chart)- [`summary`](#widget-maker-create-summary)
+#### Subcommands
 
-### Subcommand reference
+- [`chart`](#widget-maker-create-chart): Creates a chart widget
+- [`summary`](#widget-maker-create-summary): Creates a summary widget.
 
 <span id="widget-maker-create-chart"></span>
-#### `widget-maker create chart <options>`
+##### `widget-maker create chart <options>`
 
 Creates a chart widget
 
+###### `chart` options
+
+|Option|Description|
+|------|------|
+|`--chart-type`|The type of chart to create. May be 'bar' or 'line'.|
+
 <span id="widget-maker-create-summary"></span>
-#### `widget-maker create summary`
+##### `widget-maker create summary`
 
 Creates a summary widget.
+
 <span id="widget-maker-help"></span>
 ### `widget-maker help <command>`
 
 With no command specified, prints a list of available commands or, when a command  is specified, prints help for the specified command.
 
+
 #### `help` options
 
 |Option|Description|
 |------|------|
-|<command>|(_main argument_,_optional_) The command to print help for.|
+|`<command>`|(_main argument_,_optional_) The command to print help for.|
 ```
 
 ## User reference

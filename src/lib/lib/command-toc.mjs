@@ -5,11 +5,13 @@ const commandTOC = ({ commands, context, depth, header }) => {
   commands = [...commands].sort((a, b) => a.name.localeCompare(b.name))
   let content = header === undefined ? '' : sectionMark(depth + 1) + ' ' + header + '\n\n'
 
-  for (const { name, summary } of commands) {
+  for (const { description, name, summary } of commands) {
     content += `- [\`${name}\`](#${internalRef(context + ' ' + name)})`
-    if (summary !== undefined) {
-      content += `: ${summary}\n`
+    const shortDescription = summary || description
+    if (shortDescription !== undefined) {
+      content += `: ${shortDescription}`
     }
+    content += '\n'
   }
 
   content += '\n'

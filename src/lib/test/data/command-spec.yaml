@@ -1,31 +1,19 @@
-mainCommand: widget-maker
+mainCommand: foo
 mainOptions:
   - name: command
-    description: The command to execute.
     defaultOption: true
     type: String
-  - name: verbose
-    description: Makes the output a bit more chatty.
-    alias: v
-    type: Boolean
 commands:
   - name: create
-    summary: Creates a new widget.
+    summary: Creates (sets up) a cloud-based Minecraft server managed by Cloudcraft.
     arguments:
-      - name : type
+      - name : server-name
         defaultOption : true
-        description : The type of the widget to create.
+        description : The name of the server to create.
         required: true
-        # type defaults to String
-    subCommands:
-      - name: chart
-        description: Creates a chart widget
-        arguments:
-          - name: chart-type
-            description: The type of chart to create. May be 'bar' or 'line'.
-            required: true
-      - name: summary
-        description: Creates a summary widget.
+      - name: server-type
+        default: bedrock
+        description: May be either 'bedrock' or 'java'.
   - name: help
     summary: >
       With no command specified, prints a list of available commands or, when a command 
@@ -34,3 +22,32 @@ commands:
       - name: command
         defaultOption: true
         description: The command to print help for.
+  - name: info
+    summary: Prints info about the Minecraft server(s).
+    arguments:
+      - name: server-name
+        defaultOption: true
+        description: The name of the server to get into on.
+      - name: ip-address
+        type: Boolean
+        description: Select the public IP address for display.
+      - name: machine-type
+        type: Boolean
+        description: Select the machine type for display.
+      - name : refresh
+        type: Boolean
+        description: Updates underlying terraform files and applies the results before reading the output.
+  - name: list
+    summary: Lists Cloudcraft managed Minecraft servers.
+  - name: status
+    summary: Displays the status of a Minecraft server.
+    arguments:
+      - name: server-name
+        defaultOption: true
+        description: The name of the server to describe.
+      - name: no-ping
+        type: Boolean
+        description: Skips the ping test when set.
+      - name: ping-count
+        type: Number
+        description: Number of pings to send in status query.
