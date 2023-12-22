@@ -1,17 +1,41 @@
 {
   "name": "command-line-documentation",
   "version": "1.0.0-alpha.0",
-  "description": "",
+  "description": "Generates Markdown \"user guide\" based off CLI spec compatible with command-line-args and command-line-usage.",
   "main": "dist/command-line-documentation.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "make",
+    "lint": "make lint",
+    "lint:fix": "make lint-fix",
+    "test": "make test",
+    "prepack": "make build",
+    "preversion": "npm test && make lint",
+    "qa": "make qa"
+  },
+  "bin": {
+    "cld": "./dist/command-line-documentation-exec.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "keywords": [],
   "author": "Zane Rockenbaugh <zane@liquid-labs.com>",
-  "license": "UNLICENSED",
+  "license": "Apache-2.0",
   "repository": "git+ssh://git@github.com/liquid-labs/command-line-documentation.git",
   "bugs": {
     "url": "https://github.com/liquid-labs/command-line-documentation/issues"
   },
-  "homepage": "https://github.com/liquid-labs/command-line-documentation#readme"
+  "homepage": "https://github.com/liquid-labs/command-line-documentation#readme",
+  "devDependencies": {
+    "@liquid-labs/sdlc-resource-babel-and-rollup": "^1.0.0-alpha.5",
+    "@liquid-labs/sdlc-resource-eslint": "^1.0.0-alpha.2",
+    "@liquid-labs/sdlc-resource-jest": "^1.0.0-alpha.5"
+  },
+  "dependencies": {
+    "command-line-args": "^5.2.1",
+    "js-yaml": "^4.1.0"
+  },
+  "_comply": {
+    "orgKey": "@liquid-labs"
+  }
 }

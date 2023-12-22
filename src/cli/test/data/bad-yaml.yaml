@@ -1,0 +1,4 @@
+foo:
+  blah: true
+  - list
+  bar: false

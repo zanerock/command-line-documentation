@@ -1,0 +1,36 @@
+mainCommand: widget-maker
+mainOptions:
+  - name: command
+    description: The command to execute.
+    defaultOption: true
+    type: String
+  - name: verbose
+    description: Makes the output a bit more chatty.
+    alias: v
+    type: Boolean
+commands:
+  - name: create
+    summary: Creates a new widget.
+    arguments:
+      - name : type
+        defaultOption : true
+        description : The type of the widget to create.
+        required: true
+        # type defaults to String
+    subCommands:
+      - name: chart
+        description: Creates a chart widget
+        arguments:
+          - name: chart-type
+            description: The type of chart to create. May be 'bar' or 'line'.
+            required: true
+      - name: summary
+        description: Creates a summary widget.
+  - name: help
+    summary: >
+      With no command specified, prints a list of available commands or, when a command 
+      is specified, prints help for the specified command.
+    arguments:
+      - name: command
+        defaultOption: true
+        description: The command to print help for.
