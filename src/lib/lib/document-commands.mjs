@@ -27,10 +27,10 @@ const documentCommands = ({ commands, context, depth, header, noNewline = false 
       content += '\n'
       const subCommandContext = context + ' ' + name
       content += documentCommands({
-        commands : subCommands,
-        context  : subCommandContext,
-        depth    : depth + 2,
-        header   : 'Subcommands',
+        commands  : subCommands,
+        context   : subCommandContext,
+        depth     : depth + 2,
+        header    : 'Subcommands',
         noNewline : true
       })
     }

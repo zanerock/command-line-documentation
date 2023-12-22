@@ -5,7 +5,7 @@ describe('documentOptions', () => {
   test.each([
     [[], ''],
     [
-      [{ name: 'foo', defaultOption: true, description: 'The default option'}],
+      [{ name : 'foo', defaultOption : true, description : 'The default option' }],
       `## Test
 
 |Option|Description|
@@ -15,7 +15,7 @@ describe('documentOptions', () => {
 `
     ],
     [
-      [{ name: 'bar', description: 'Optional option'}], 
+      [{ name : 'bar', description : 'Optional option' }],
       `## Test
 
 |Option|Description|
@@ -25,7 +25,7 @@ describe('documentOptions', () => {
 `
     ],
     [
-      [{name: 'baz', alias: 'b', description: 'Aliased option'}],
+      [{ name : 'baz', alias : 'b', description : 'Aliased option' }],
       `## Test
 
 |Option|Description|
@@ -34,6 +34,6 @@ describe('documentOptions', () => {
 
 `
     ]
-  ])('%s -> %s', (allOptions, expected) => 
-    expect(documentOptions({ allOptions, depth: 1, header: 'Test' })).toBe(expected))
+  ])('%s -> %s', (allOptions, expected) =>
+    expect(documentOptions({ allOptions, depth : 1, header : 'Test' })).toBe(expected))
 })

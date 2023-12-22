@@ -9,6 +9,6 @@ describe('chalkTemplateToMd', () => {
     ['{underline.bold hi}', '___hi___'],
     ['{red hi}', 'hi'],
     ['hello {underline you} rascal', 'hello _you_ rascal'],
-    ['hello {underline you} {bold rascal}', 'hello _you_ __rascal__'],
+    ['hello {underline you} {bold rascal}', 'hello _you_ __rascal__']
   ])('%s -> %s', (input, expected) => expect(chalkTemplateToMd(input)).toBe(expected))
 })

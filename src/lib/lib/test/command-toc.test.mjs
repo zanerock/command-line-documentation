@@ -5,7 +5,7 @@ describe('commandTOC', () => {
   const header = 'Test'
   const depth = 2
   const context = 'foo'
-  const commands = [{ name: 'last', summary : 'The last command.' }, { name: 'first', summary: 'the first command'}]
+  const commands = [{ name : 'last', summary : 'The last command.' }, { name : 'first', summary : 'the first command' }]
   const expected = `### Test
 
 - [\`first\`](#foo-first): the first command

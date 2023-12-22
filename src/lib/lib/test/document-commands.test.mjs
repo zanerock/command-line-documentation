@@ -3,20 +3,20 @@ import { documentCommands } from '../document-commands'
 
 describe('documentCommands', () => {
   const commands = [
-    { 
-      name: 'command-b',
-      arguments: [{ name: 'sub-command', description: 'the sub-command.', defaultOption: true }],
-      subCommands: [
-        { name: 'sub-a', summary: 'Subcommand A' },
-        { name: 'sub-b', description: 'Subcommand B' }
+    {
+      name        : 'command-b',
+      arguments   : [{ name : 'sub-command', description : 'the sub-command.', defaultOption : true }],
+      subCommands : [
+        { name : 'sub-a', summary : 'Subcommand A' },
+        { name : 'sub-b', description : 'Subcommand B' }
       ],
-      description: 'Command with sub-commands'
+      description : 'Command with sub-commands'
     },
-    { 
-      name: 'command-a', 
-      arguments: [ { name: 'option-a', description: 'an option'}], 
-      summary:'The first command.', 
-      description: 'More details.'
+    {
+      name        : 'command-a',
+      arguments   : [{ name : 'option-a', description : 'an option' }],
+      summary     : 'The first command.',
+      description : 'More details.'
     }
   ]
   const context = 'main-command'
@@ -68,7 +68,6 @@ Subcommand B
 
 
 `
-
 
   let content
   beforeAll(() => {

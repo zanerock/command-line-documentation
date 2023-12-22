@@ -14,7 +14,7 @@ const documentOptions = ({ depth, header, allOptions }) => {
 
   if (defaultOption !== undefined) {
     const { description, required } = defaultOption
-    content += '|`' + displayArg(defaultOption) 
+    content += '|`' + displayArg(defaultOption)
       + `\`|(_main argument_,_${required === true ? 'required' : 'optional'}_) ` + description + '|\n'
   }
 

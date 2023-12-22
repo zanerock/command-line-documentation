@@ -11,7 +11,7 @@ describe('convertCLISpecTypes', () => {
 
   beforeAll(async() => {
     const commandSpecPath = fsPath.join(__dirname, 'data', 'command-spec.yaml')
-    const commandSpecContents = await fs.readFile(commandSpecPath, { encoding: 'utf8' })
+    const commandSpecContents = await fs.readFile(commandSpecPath, { encoding : 'utf8' })
     const rawCLISpec = yaml.load(commandSpecContents)
 
     cliSpec = convertCLISpecTypes(rawCLISpec)
@@ -28,6 +28,6 @@ describe('convertCLISpecTypes', () => {
   })
 
   test('Raises error on non-convertable type', () => {
-    expect(() => convertCLISpecTypes({ mainOptions: [{ type: '() => 1' }]})).toThrow(/Cannot convert/)
+    expect(() => convertCLISpecTypes({ mainOptions : [{ type : '() => 1' }] })).toThrow(/Cannot convert/)
   })
 })

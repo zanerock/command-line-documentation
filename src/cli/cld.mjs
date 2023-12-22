@@ -7,31 +7,31 @@ import { commandLineDocumentation } from '../lib/command-line-documentation'
 import { convertCLISpecTypes } from '../lib/convert-cli-spec-types'
 
 const myCLISpec = {
-  mainCommand: 'cld',
-  mainOptions: [
-    { 
-      name: 'cli-spec-path',
-      description: 'The path to the [CLI spec file](https://github.com/liquid-labs/command-line-documentation##cli-spec-data-structure).',
-      defaultOption: true
+  mainCommand : 'cld',
+  mainOptions : [
+    {
+      name          : 'cli-spec-path',
+      description   : 'The path to the [CLI spec file](https://github.com/liquid-labs/command-line-documentation##cli-spec-data-structure).',
+      defaultOption : true
     },
-    { 
-      name: 'document',
-      description: '({underline bool} when set, will generate own documentation and exit. The `--depth` and `--title` options work with self-documentation as well.',
-      type: Boolean
+    {
+      name        : 'document',
+      description : '({underline bool} when set, will generate own documentation and exit. The `--depth` and `--title` options work with self-documentation as well.',
+      type        : Boolean
     },
-    { 
-      name: 'section-depth',
-      description: "({underline integer}, default: 1) a depth of '1' (the default) makes the initial section a title (H1/'#') heading. A depth of two would generate an H1/'##' heading, etc.",
-      type: Number
+    {
+      name        : 'section-depth',
+      description : "({underline integer}, default: 1) a depth of '1' (the default) makes the initial section a title (H1/'#') heading. A depth of two would generate an H1/'##' heading, etc.",
+      type        : Number
     },
-    { 
-      name: 'title',
-      description: '({underline string}, default: {underline dynamic) specifies the primary section heading (title). If not specified, will default to "\`${mainCommand}\` Command Reference".'
+    {
+      name        : 'title',
+      description : '({underline string}, default: {underline dynamic) specifies the primary section heading (title). If not specified, will default to "\`${mainCommand}\` Command Reference".'
     }
   ]
 }
 
-const cld = async ({ argv = process.argv, stderr = process.stderr, stdout = process.stdout } = {}) => {
+const cld = async({ argv = process.argv, stderr = process.stderr, stdout = process.stdout } = {}) => {
   const options = commandLineArgs(myCLISpec.mainOptions, { argv })
   const filePath = options['cli-spec-path']
   const { document: doDocument, title } = options
@@ -53,7 +53,7 @@ const cld = async ({ argv = process.argv, stderr = process.stderr, stdout = proc
 
   let fileContents
   try {
-    fileContents = await fs.readFile(filePath, { encoding: 'utf8' })
+    fileContents = await fs.readFile(filePath, { encoding : 'utf8' })
   }
   catch (e) {
     if (e.code === 'ENOENT') {
