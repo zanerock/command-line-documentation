@@ -154,6 +154,8 @@ __Arguments__:
 
 ### CLI spec data structure
 
+The following is a comprehensive CLI spec example.
+
 ```yaml
 mainCommand: widget-maker
 mainOptions:
@@ -181,6 +183,7 @@ commands:
           - name: chart-type
             description: The type of chart to create. May be 'bar' or 'line'.
             required: true
+        # each sub-command may have further sub-commands indeinitely
       - name: summary
         description: Creates a summary widget.
   - name: help
