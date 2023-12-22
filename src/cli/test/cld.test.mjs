@@ -19,7 +19,7 @@ describe('cld', () => {
 
   test('prints documentation to stdout given valid file path', async() => {
     const testDataPath = fsPath.resolve(__dirname, '..', '..', 'lib', 'test', 'data', 'command-spec.yaml')
-    const argv = [undefined, undefined, testDataPath]
+    const argv = [testDataPath]
 
     const exitCode = await cld({ argv, stderr, stdout })
 
@@ -38,7 +38,7 @@ describe('cld', () => {
 
   test('exists with code 2 if CLI spec path points to nothing', async() => {
     const badPath = fsPath.join(__dirname, 'ThisIsNotAValidFile.yaml')
-    const argv = [undefined, undefined, badPath]
+    const argv = [badPath]
 
     const exitCode = await cld({ argv, stderr, stdout })
     expect(exitCode).toBe(2)
@@ -48,7 +48,7 @@ describe('cld', () => {
 
   test('exists with code 3 if CLI spec yaml is invalid', async() => {
     const badYAMLPath = fsPath.join(__dirname, 'data', 'bad-yaml.yaml')
-    const argv = [undefined, undefined, badYAMLPath]
+    const argv = [badYAMLPath]
 
     const exitCode = await cld({ argv, stderr, stdout })
     expect(exitCode).toBe(3)
@@ -58,7 +58,7 @@ describe('cld', () => {
 
   test('exists with code 4 if CLI spec contains invalid type', async() => {
     const badTypePath = fsPath.join(__dirname, 'data', 'bad-type.yaml')
-    const argv = [undefined, undefined, badTypePath]
+    const argv = [badTypePath]
 
     const exitCode = await cld({ argv, stderr, stdout })
     expect(exitCode).toBe(4)
