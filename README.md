@@ -3,7 +3,17 @@
 
 Generates Markdown "user guide" based off CLI spec compatible with [command-line-args]() and [command-line-usage]().
 
-___ALPHA status software__: The main documentaiton feature is working but we expect to add significant new functionality and improve ease of use before GA.
+___ALPHA status software___: The main documentaiton feature is working but we expect to add significant new functionality and improve ease of use before GA.
+
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Library usage](#library-usage)
+  - [`cld` usage](#cld-usage)
+- [Example output](#example-output)
+- [User reference](#user-reference)
+  - [Library API](#library-api)
+  - [CLI spec data structure](cli-spec-data-structure)
+  - [CLI reference](#cli-reference)
 
 ## Installation
 
@@ -142,7 +152,7 @@ Converts a file-based CLI spec (which is pure YAML/JSON) to a [CLI spec data str
 __Arguments__:
 - `cliSpec`: (_object_) a [CLI spec data structure](#cli-spec-data-structure) except that the 'types' are represented by strings rather than functions.
 
-#### CLI spec data structure
+### CLI spec data structure
 
 ```yaml
 mainCommand: widget-maker
