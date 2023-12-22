@@ -3,6 +3,8 @@
 
 Generates Markdown "user guide" based off CLI spec compatible with [command-line-args]() and [command-line-usage]().
 
+___ALPHA status software__: The main documentaiton feature is working but we expect to add significant new functionality and improve ease of use before GA.
+
 ## Installation
 
 ```bash
