@@ -12,7 +12,7 @@ ___ALPHA status software___: The main documentaiton feature is working but we ex
 - [Example output](#example-output)
 - [User reference](#user-reference)
   - [Library API](#library-api)
-  - [CLI spec data structure](cli-spec-data-structure)
+  - [CLI spec data structure](#cli-spec-data-structure)
   - [CLI reference](#cli-reference)
 
 ## Installation
