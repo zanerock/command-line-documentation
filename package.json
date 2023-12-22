@@ -36,6 +36,6 @@
     "js-yaml": "^4.1.0"
   },
   "_comply": {
-    "orgKey": "liquid-labs"
+    "orgKey": "@liquid-labs"
   }
 }
