@@ -1,4 +1,4 @@
-/* global describe expect test */
+/* global beforeAll describe expect test */
 import { documentCommands } from '../document-commands'
 
 describe('documentCommands', () => {

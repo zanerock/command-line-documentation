@@ -26,7 +26,8 @@ const myCLISpec = {
     },
     {
       name        : 'title',
-      description : '({underline string}, default: {underline dynamic) specifies the primary section heading (title). If not specified, will default to "\`${mainCommand}\` Command Reference".'
+      // eslint-disable-next-line no-template-curly-in-string
+      description : '({underline string}, default: {underline dynamic}) specifies the primary section heading (title). If not specified, will default to "`${mainCommand}` Command Reference".'
     }
   ]
 }

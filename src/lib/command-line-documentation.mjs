@@ -1,4 +1,3 @@
-import { commandTOC } from './lib/command-toc'
 import { documentCommands } from './lib/document-commands'
 import { documentOptions } from './lib/document-options'
 import { documentUsage } from './lib/document-usage'
