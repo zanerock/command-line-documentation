@@ -176,7 +176,7 @@ commands:
         description : The type of the widget to create.
         required: true
         # type defaults to String
-    subCommands:
+    commands:
       - name: chart
         description: Creates a chart widget
         arguments:
