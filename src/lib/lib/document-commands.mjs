@@ -12,7 +12,7 @@ const documentCommands = ({ commands, context, depth, header, noNewline = false 
 
   content += commandTOC({ commands, context })
 
-  commands.forEach(({ arguments: args, subCommands, description, name, summary }, i, arr) => {
+  commands.forEach(({ arguments: args, commands: subCommands, description, name, summary }, i, arr) => {
     content += '<span id="' + internalRef(context + ' ' + name) + '"></span>\n'
     content += sectionMark(depth + 2) + ` \`${context} ${name}` + documentCommandArgs({ allOptions : args }) + '`\n\n'
     content += description !== undefined

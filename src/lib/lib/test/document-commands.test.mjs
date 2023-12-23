@@ -6,7 +6,7 @@ describe('documentCommands', () => {
     {
       name        : 'command-b',
       arguments   : [{ name : 'sub-command', description : 'the sub-command.', defaultOption : true }],
-      subCommands : [
+      commands : [
         { name : 'sub-a', summary : 'Subcommand A' },
         { name : 'sub-b', description : 'Subcommand B' }
       ],
