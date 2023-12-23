@@ -4,9 +4,9 @@ import { documentCommands } from '../document-commands'
 describe('documentCommands', () => {
   const commands = [
     {
-      name        : 'command-b',
-      arguments   : [{ name : 'sub-command', description : 'the sub-command.', defaultOption : true }],
-      commands : [
+      name      : 'command-b',
+      arguments : [{ name : 'sub-command', description : 'the sub-command.', defaultOption : true }],
+      commands  : [
         { name : 'sub-a', summary : 'Subcommand A' },
         { name : 'sub-b', description : 'Subcommand B' }
       ],
