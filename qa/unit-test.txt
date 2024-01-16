@@ -1,0 +1,34 @@
+Test git rev: fb58e6fdb26a66c8e9639c75a7b48b5dd02293ab
+PASS lib/lib/test/document-commands.test.js
+PASS cli/test/cld.test.js
+PASS lib/test/convert-cli-spec-types.test.js
+PASS lib/lib/test/document-usage.test.js
+PASS lib/lib/test/document-command-args.test.js
+PASS lib/lib/test/document-options.test.js
+PASS lib/lib/test/command-toc.test.js
+PASS lib/lib/test/chalk-template-to-md.test.js
+---------------------------------|---------|----------|---------|---------|-------------------
+File                             | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+---------------------------------|---------|----------|---------|---------|-------------------
+All files                        |    93.2 |    83.49 |   95.65 |   92.82 |                   
+ cli                             |   82.92 |       70 |     100 |    82.5 |                   
+  cld.mjs                        |   82.92 |       70 |     100 |    82.5 | 42-43,50-52,64-65 
+ lib                             |   95.65 |       80 |   85.71 |   95.45 |                   
+  command-line-documentation.mjs |    91.3 |       75 |      50 |    91.3 | 7,12              
+  convert-cli-spec-types.mjs     |     100 |    84.61 |     100 |     100 | 10,18             
+ lib/lib                         |   95.79 |    89.65 |     100 |   95.49 |                   
+  chalk-template-to-md.mjs       |     100 |      100 |     100 |     100 |                   
+  command-toc.mjs                |     100 |      100 |     100 |     100 |                   
+  display-arg.mjs                |     100 |      100 |     100 |     100 |                   
+  document-command-args.mjs      |     100 |      100 |     100 |     100 |                   
+  document-commands.mjs          |     100 |    88.88 |     100 |     100 | 23                
+  document-options.mjs           |     100 |      100 |     100 |     100 |                   
+  document-usage.mjs             |     100 |      100 |     100 |     100 |                   
+  helpers.mjs                    |   76.19 |    68.75 |     100 |   73.68 | 8-15              
+---------------------------------|---------|----------|---------|---------|-------------------
+
+Test Suites: 8 passed, 8 total
+Tests:       30 passed, 30 total
+Snapshots:   0 total
+Time:        0.292 s, estimated 1 s
+Ran all test suites.
