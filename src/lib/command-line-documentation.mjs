@@ -19,7 +19,7 @@ const commandLineDocumentation = (
   const { mainOptions } = cliSpec
   const { commands } = cliSpec
 
-  content = sectionMark({ depth, header: title}) //  section/page title
+  content = sectionMark({ depth, header : title }) //  section/page title
 
   content += documentUsage({ depth, mainCommand, mainOptions })
 

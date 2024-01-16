@@ -8,7 +8,7 @@ const documentOptions = ({ depth, header, allOptions }) => {
     return ''
   }
 
-  let content = sectionMark({ depth: depth + 1, header })
+  let content = sectionMark({ depth : depth + 1, header })
 
   content += '|Option|Description|\n|------|------|\n'
 

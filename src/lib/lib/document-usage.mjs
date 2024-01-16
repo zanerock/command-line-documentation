@@ -2,7 +2,7 @@ import { documentCommandArgs } from './document-command-args'
 import { sectionMark } from './helpers'
 
 const documentUsage = ({ depth, mainCommand, mainOptions }) => {
-  let usage = sectionMark({ depth: depth + 1, header: 'Usage' })
+  let usage = sectionMark({ depth : depth + 1, header : 'Usage' })
 
   usage += '`' + mainCommand
 

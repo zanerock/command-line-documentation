@@ -11,7 +11,7 @@ const sectionMark = ({ depth, header }) => {
     if (depth === 8) {
       return `__${header}__\n\n`
     }
-    else {// if (depth > 8) {
+    else { // if (depth > 8) {
       return `_${header}_\n\n`
     }
   }
