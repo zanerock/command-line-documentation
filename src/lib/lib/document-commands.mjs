@@ -4,7 +4,7 @@ import { documentCommandArgs } from './document-command-args'
 import { documentOptions } from './document-options'
 import { internalRef, sectionMark } from './helpers'
 
-const documentCommands = ({ commands, context, depth, header, noNewline = false }) => {
+const documentCommands = ({ basePath, commands, context, depth, header, multiPage, noNewline = false }) => {
   // make a copy so we don't change the order of the original input; yes, this is duplicated in 'commandTOC', but the
   // way commands are passed, there's not a unified place to do this. It's fine for now.
   commands = [...commands].sort((a, b) => a.name.localeCompare(b.name))

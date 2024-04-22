@@ -3,9 +3,11 @@ import { documentOptions } from './lib/document-options'
 import { documentUsage } from './lib/document-usage'
 import { sectionMark } from './lib/helpers'
 
+TODO: to support multi-page documents, we're going to switch up implementation to generate a universal intermediate JSON form which is then processed to generate output based on settings.
+
 const commandLineDocumentation = (
   cliSpec = throw new Error("Missing required parameter 'cliSpec'."),
-  { mainCommand, sectionDepth = 1, title } = {}
+  { mainCommand, multiPage = false, sectionDepth = 1, title } = {}
 ) => {
   mainCommand = mainCommand || cliSpec.mainCommand
   if (mainCommand === undefined) {
@@ -24,7 +26,7 @@ const commandLineDocumentation = (
   content += documentUsage({ depth, mainCommand, mainOptions })
 
   if (mainOptions !== undefined) {
-    const mainOptionsHeader = commands === undefined ? 'Options' : 'Main options'
+    const mainOptionsHeader = commands === undefined ? 'Options' : 'Global options'
     content += documentOptions({ depth, header : mainOptionsHeader, allOptions : mainOptions })
   }
 
